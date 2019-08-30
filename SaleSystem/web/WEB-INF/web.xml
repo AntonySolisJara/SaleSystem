@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>InicioController</servlet-name>
+        <servlet-class>com.sales.controllers.InicioController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogValidatorController</servlet-name>
+        <servlet-class>com.sales.controllers.LogValidatorController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InicioController</servlet-name>
+        <url-pattern>/InicioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogValidatorController</servlet-name>
+        <url-pattern>/LogValidatorController</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
