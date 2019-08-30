@@ -1,6 +1,5 @@
 package com.sales.controllers;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +26,18 @@ public class InicioController extends HttpServlet {
         switch (accion){
             case "Inicio":
                 request.getRequestDispatcher("Inicio.jsp").forward(request, response);
+                break;
+            case "Cliente":
+                request.getRequestDispatcher("Cliente.jsp").forward(request, response);
+                break;
+            case "Empleado":
+                request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+                break;
+            case "Producto":
+                request.getRequestDispatcher("Producto.jsp").forward(request, response);
+                break;
+            case "RegistrarVenta":
+                request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                 break;
             default:
                 throw new AssertionError();

@@ -27,20 +27,18 @@ public class LogValidatorController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion = request.getParameter("accion");//nombre del boton: name="accion"
-        if (accion.equalsIgnoreCase("Ingresar")) {
-            String user = request.getParameter("txtuser");
-            String pass = request.getParameter("txtpass");
-            em = edao.validar(user, pass);
-            if (em.getUser() != null) {
-                request.getRequestDispatcher("InicioController?accion=Inicio").forward(request, response);
-            }
-            else{
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-        }
-        else{
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -70,7 +68,22 @@ public class LogValidatorController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String accion = request.getParameter("accion");
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String user = request.getParameter("txtuser");
+            String pass = request.getParameter("txtpass");
+            em = edao.validar(user, pass);
+            if (em.getUser() != null) {
+                request.setAttribute("usuario", em);
+                request.getRequestDispatcher("InicioController?accion=Inicio").forward(request, response);
+            }
+            else{
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }
+        else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     /**
