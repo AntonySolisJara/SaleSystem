@@ -1,5 +1,8 @@
 package com.sales.controllers;
+import com.sales.models.EmpleadoDAO;
+import com.sales.models.EmpleadoModel;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class InicioController extends HttpServlet {
 
+    EmpleadoModel em = new EmpleadoModel();
+    EmpleadoDAO edao = new EmpleadoDAO();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,6 +39,8 @@ public class InicioController extends HttpServlet {
         if (menu.equals("Empleado")) {
                     switch (accion){
                     case "Listar":
+                        List lista = edao.listar();
+                        request.setAttribute("empleados", lista);
                         break;
                     case "Ingresar":
                         break;
