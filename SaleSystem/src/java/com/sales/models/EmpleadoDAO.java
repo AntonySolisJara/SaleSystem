@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,5 +37,38 @@ public class EmpleadoDAO {
             
         }
         return em;
+    }
+    
+    public List listar(){
+        String sql = "select * from empleado";
+        List<EmpleadoModel> lista = new ArrayList<>();
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                EmpleadoModel em = new EmpleadoModel();
+                em.setId(rs.getInt("IdEmpleado"));
+                em.setCed(rs.getString("Cedula"));
+                em.setNom(rs.getString("Nombre"));
+                em.setUser(rs.getString("Usuario"));
+            }
+        }
+        catch (SQLException e){
+            
+        }
+        return lista;
+    }
+    
+    public int agregar(EmpleadoModel e){
+        
+    }
+    
+    public int actualizar(EmpleadoModel e){
+        
+    }
+    
+    public void eliminar(int IdEmpleado){
+        
     }
 }

@@ -20,16 +20,16 @@
                   <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?accion=Producto" target="myFrame">Productos</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Producto" target="myFrame">Productos</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?accion=Empleado" target="myFrame">Empleados</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Empleado" target="myFrame">Empleados</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?accion=Cliente" target="myFrame">Clientes</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Cliente" target="myFrame">Clientes</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?accion=RegistrarVenta" target="myFrame">Venta nueva</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=RegistrarVenta" target="myFrame">Venta nueva</a>
                 </li>
               </ul>
                 <div class="dropdown ml-auto">
@@ -50,8 +50,8 @@
               </div>
             </div>
           </nav>
-                  <div class="m-4" style="height: 500px">
-                      <iframe name="myFrame" height="100%" width="100%">
+                  <div class="m-4" style="height: 530px">
+                      <iframe name="myFrame" style="height: 100%; width: 100%; border: none">
                           
                       </iframe>
                   </div>

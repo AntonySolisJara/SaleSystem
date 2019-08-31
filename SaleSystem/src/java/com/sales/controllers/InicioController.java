@@ -22,25 +22,34 @@ public class InicioController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        switch (accion){
-            case "Inicio":
-                request.getRequestDispatcher("Inicio.jsp").forward(request, response);
-                break;
-            case "Cliente":
-                request.getRequestDispatcher("Cliente.jsp").forward(request, response);
-                break;
-            case "Empleado":
-                request.getRequestDispatcher("Empleado.jsp").forward(request, response);
-                break;
-            case "Producto":
-                request.getRequestDispatcher("Producto.jsp").forward(request, response);
-                break;
-            case "RegistrarVenta":
-                request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
-                break;
-            default:
-                throw new AssertionError();
+        if (menu.equals("Inicio")) {
+            request.getRequestDispatcher("Inicio.jsp").forward(request, response);
+        }
+        if (menu.equals("Cliente")) {
+            request.getRequestDispatcher("Cliente.jsp").forward(request, response);
+        }
+        if (menu.equals("Empleado")) {
+                    switch (accion){
+                    case "Listar":
+                        break;
+                    case "Ingresar":
+                        break;
+                    case "Eliminar":
+                        break;
+                    case "Editar":
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+        }
+        if (menu.equals("Producto")) {
+            request.getRequestDispatcher("Producto.jsp").forward(request, response);
+        }
+        if (menu.equals("RegistrarVenta")) {
+            request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
     }
 
