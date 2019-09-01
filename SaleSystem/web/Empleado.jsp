@@ -4,6 +4,7 @@
     Author     : Antony
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form>
+                    <form action="InicioController?menu=Empleado" method="POST">
                         <div class="form-group">
                             <label>Cedula</label>
                             <input type="text" name="txtCedula" class="form-control">
@@ -37,27 +38,39 @@
                             <label>Usuario</label>
                             <input type="text" name="txtUsuario" class="form-control">
                         </div>
-                        <input type="submit" name="accio" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
                 <table class="table table-hover">
                     <thead>
-                        <th>Cedula</th>
-                        <th>Nombre</th>
-                        <th>Telefono</th>
-                        <th>Estado</th>
-                        <th>Usuario</th>
-                        <th>Acciones</th>
-                    </thead>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <tr>
+                            <th>IdEmpleado</th>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Estado</th>
+                            <th>Usuario</th>
+                            <th>Acciones</th> 
+                        </tr>
+                        
+                    </thead>               
                     <tbody>
-
+                        <c:forEach var="em" items="${empleados}">
+                        <tr>
+                            <td>${em.getId()}</td>
+                            <td>${em.getCed()}</td>
+                            <td>${em.getNom()}</td>
+                            <td>${em.getTel()}</td>
+                            <td>${em.getEst()}</td>
+                            <td>${em.getUser()}</td>
+                            <td>
+                                <a>Editar</a>
+                                <a>Eliminar</a>
+                            </td>
+                        </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>

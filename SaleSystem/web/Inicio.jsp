@@ -23,7 +23,7 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Producto" target="myFrame">Productos</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Empleado" target="myFrame">Empleados</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Empleado&accion=Listar" target="myFrame">Empleados</a>
                 </li>
                 <li class="nav-item">
                   <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Cliente" target="myFrame">Clientes</a>

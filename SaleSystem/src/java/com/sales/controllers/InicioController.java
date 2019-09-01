@@ -42,7 +42,19 @@ public class InicioController extends HttpServlet {
                         List lista = edao.listar();
                         request.setAttribute("empleados", lista);
                         break;
-                    case "Ingresar":
+                    case "Agregar":
+                        String ced = request.getParameter("txtCedula");
+                        String nom = request.getParameter("txtNombre");
+                        String tel = request.getParameter("txtTelefono");
+                        String est = request.getParameter("txtEstado");
+                        String user = request.getParameter("txtUsuario");
+                        em.setCed(ced);
+                        em.setNom(nom);
+                        em.setTel(tel);
+                        em.setEst(est);
+                        em.setUser(user);
+                        edao.agregar(em);
+                        request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
                         break;
                     case "Eliminar":
                         break;

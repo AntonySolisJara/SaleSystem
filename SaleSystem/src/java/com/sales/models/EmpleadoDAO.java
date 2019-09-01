@@ -70,12 +70,12 @@ public class EmpleadoDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 EmpleadoModel em = new EmpleadoModel();
-                em.setId(rs.getInt("IdEmpleado"));
-                em.setCed(rs.getString("Cedula"));
-                em.setNom(rs.getString("Nombre"));
-                em.setTel(rs.getString("Telefono"));
-                em.setEst(rs.getString("Estado"));
-                em.setUser(rs.getString("Usuario"));
+                em.setId(rs.getInt(1));
+                em.setCed(rs.getString(2));
+                em.setNom(rs.getString(3));
+                em.setTel(rs.getString(4));
+                em.setEst(rs.getString(5));
+                em.setUser(rs.getString(6));
                 lista.add(em);
             }
         }
