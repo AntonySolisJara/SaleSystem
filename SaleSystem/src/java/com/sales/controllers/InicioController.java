@@ -16,6 +16,7 @@ public class InicioController extends HttpServlet {
 
     EmpleadoModel em = new EmpleadoModel();
     EmpleadoDAO edao = new EmpleadoDAO();
+    int ide;
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,8 +58,30 @@ public class InicioController extends HttpServlet {
                         request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
                         break;
                     case "Eliminar":
+                        ide = Integer.parseInt(request.getParameter("id"));
+                        edao.eliminar(ide);
+                        request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
                         break;
                     case "Editar":
+                        ide = Integer.parseInt(request.getParameter("id"));
+                        EmpleadoModel e = edao.listarId(ide);
+                        request.setAttribute("empleado", e);
+                        request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
+                        break;
+                    case "Actualizar":
+                        String ced1 = request.getParameter("txtCedula");
+                        String nom1 = request.getParameter("txtNombre");
+                        String tel1 = request.getParameter("txtTelefono");
+                        String est1 = request.getParameter("txtEstado");
+                        String user1 = request.getParameter("txtUsuario");
+                        em.setCed(ced1);
+                        em.setNom(nom1);
+                        em.setTel(tel1);
+                        em.setEst(est1);
+                        em.setUser(user1);
+                        em.setId(ide);
+                        edao.actualizar(em);
+                        request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
                         break;
                     default:
                         throw new AssertionError();

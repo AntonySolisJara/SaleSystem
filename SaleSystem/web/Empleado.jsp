@@ -20,25 +20,26 @@
                     <form action="InicioController?menu=Empleado" method="POST">
                         <div class="form-group">
                             <label>Cedula</label>
-                            <input type="text" name="txtCedula" class="form-control">
+                            <input type="text" name="txtCedula" value="${empleado.getCed()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" name="txtNombre" class="form-control">
+                            <input type="text" name="txtNombre" value="${empleado.getNom()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Telefono</label>
-                            <input type="text" name="txtTelefono" class="form-control">
+                            <input type="text" name="txtTelefono" value="${empleado.getTel()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Estado</label>
-                            <input type="text" name="txtEstado" class="form-control">
+                            <input type="text" name="txtEstado" value="${empleado.getEst()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input type="text" name="txtUsuario" class="form-control">
+                            <input type="text" name="txtUsuario" value="${empleado.getUser()}" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -66,8 +67,8 @@
                             <td>${em.getEst()}</td>
                             <td>${em.getUser()}</td>
                             <td>
-                                <a>Editar</a>
-                                <a>Eliminar</a>
+                                <a class="btn btn-warning" href="InicioController?menu=Empleado&accion=Editar&id=${em.getId()}">Editar</a>
+                                <a class="btn btn-danger" href="InicioController?menu=Empleado&accion=Eliminar&id=${em.getId()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
