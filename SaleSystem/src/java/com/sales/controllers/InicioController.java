@@ -1,4 +1,6 @@
 package com.sales.controllers;
+import com.sales.models.ClienteDAO;
+import com.sales.models.ClienteModel;
 import com.sales.models.EmpleadoDAO;
 import com.sales.models.EmpleadoModel;
 import java.io.IOException;
@@ -16,6 +18,8 @@ public class InicioController extends HttpServlet {
 
     EmpleadoModel em = new EmpleadoModel();
     EmpleadoDAO edao = new EmpleadoDAO();
+    ClienteModel cm = new ClienteModel();
+    ClienteDAO cdao = new ClienteDAO();
     int ide;
     
     /**
@@ -35,6 +39,58 @@ public class InicioController extends HttpServlet {
             request.getRequestDispatcher("Inicio.jsp").forward(request, response);
         }
         if (menu.equals("Cliente")) {
+            switch (accion){
+                    case "Listar":
+                        List lista = cdao.listar();
+                        request.setAttribute("clientes", lista);
+                        break;
+                    case "Agregar":
+                        String ced = request.getParameter("txtCedula");
+                        String nom = request.getParameter("txtNombre");
+                        String tel = request.getParameter("txtTelefono");
+                        String cor = request.getParameter("txtCorreo");
+                        String dir = request.getParameter("txtDireccion");
+                        String est = request.getParameter("txtEstado");
+                        cm.setCed(ced);
+                        cm.setNom(nom);
+                        cm.setTel(tel);
+                        cm.setCor(cor);
+                        cm.setDir(dir);
+                        cm.setEst(est);
+                        cdao.agregar(cm);
+                        request.getRequestDispatcher("InicioController?menu=Cliente&accion=Listar").forward(request, response);
+                        break;
+                    case "Eliminar":
+                        ide = Integer.parseInt(request.getParameter("id"));
+                        cdao.eliminar(ide);
+                        request.getRequestDispatcher("InicioController?menu=Cliente&accion=Listar").forward(request, response);
+                        break;
+                    case "Editar":
+                        ide = Integer.parseInt(request.getParameter("id"));
+                        ClienteModel c = cdao.listarId(ide);
+                        request.setAttribute("cliente", c);
+                        request.getRequestDispatcher("InicioController?menu=Cliente&accion=Listar").forward(request, response);
+                        break;
+                    case "Actualizar":
+                        String ced1 = request.getParameter("txtCedula");
+                        String nom1 = request.getParameter("txtNombre");
+                        String tel1 = request.getParameter("txtTelefono");
+                        String cor1 = request.getParameter("txtCorreo");
+                        String dir1 = request.getParameter("txtDireccion");
+                        String est1 = request.getParameter("txtEstado");
+                        cm.setCed(ced1);
+                        cm.setNom(nom1);
+                        cm.setTel(tel1);
+                        cm.setCor(cor1);
+                        cm.setDir(dir1);
+                        cm.setEst(est1);
+                        cm.setId(ide);
+                        cdao.actualizar(cm);
+                        request.getRequestDispatcher("InicioController?menu=Cliente&accion=Listar").forward(request, response);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
             request.getRequestDispatcher("Cliente.jsp").forward(request, response);
         }
         if (menu.equals("Empleado")) {
@@ -47,13 +103,17 @@ public class InicioController extends HttpServlet {
                         String ced = request.getParameter("txtCedula");
                         String nom = request.getParameter("txtNombre");
                         String tel = request.getParameter("txtTelefono");
-                        String est = request.getParameter("txtEstado");
+                        String cor = request.getParameter("txtCorreo");
                         String user = request.getParameter("txtUsuario");
+                        String cont = request.getParameter("txtContrasena");
+                        String est = request.getParameter("txtEstado");
                         em.setCed(ced);
                         em.setNom(nom);
                         em.setTel(tel);
-                        em.setEst(est);
+                        em.setCor(cor);
                         em.setUser(user);
+                        em.setCont(cont);
+                        em.setEst(est);
                         edao.agregar(em);
                         request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);
                         break;
@@ -72,13 +132,17 @@ public class InicioController extends HttpServlet {
                         String ced1 = request.getParameter("txtCedula");
                         String nom1 = request.getParameter("txtNombre");
                         String tel1 = request.getParameter("txtTelefono");
-                        String est1 = request.getParameter("txtEstado");
+                        String cor1 = request.getParameter("txtCorreo");
                         String user1 = request.getParameter("txtUsuario");
+                        String cont1 = request.getParameter("txtContrasena");
+                        String est1 = request.getParameter("txtEstado");
                         em.setCed(ced1);
                         em.setNom(nom1);
                         em.setTel(tel1);
-                        em.setEst(est1);
+                        em.setCor(cor1);
                         em.setUser(user1);
+                        em.setCont(cont1);
+                        em.setEst(est1);
                         em.setId(ide);
                         edao.actualizar(em);
                         request.getRequestDispatcher("InicioController?menu=Empleado&accion=Listar").forward(request, response);

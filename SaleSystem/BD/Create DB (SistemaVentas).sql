@@ -35,6 +35,8 @@ Create Table cliente
 IdCliente int IDENTITY (1,1),
 Cedula varchar(15) NOT NULL,
 Nombre varchar(244) NOT NULL,
+Telefono varchar (11) NOT NULL,
+Correo varchar (150) NOT NULL,
 Direccion varchar(244) NOT NULL,
 Estado varchar(1) NOT NULL
 );
@@ -44,11 +46,13 @@ GO
 Create Table empleado
 (
 IdEmpleado int IDENTITY (1,1),
-Cedula varchar (8) NOT NULL,
+Cedula varchar (20) NOT NULL,
 Nombre varchar (255) NOT NULL,
 Telefono varchar (11) NOT NULL,
-Estado varchar (1) NOT NULL,
-Usuario varchar(8) NULL
+Correo varchar (150) NOT NULL,
+Usuario varchar(8) NOT NULL,
+Contrasena varchar(8) NOT NULL,
+Estado varchar (1) NOT NULL
 );
 ALTER TABLE empleado ADD CONSTRAINT PK_SV_empleado	PRIMARY KEY (IdEmpleado);
 GO

@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="#">Home</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Producto" target="myFrame">Productos</a>
@@ -26,7 +26,7 @@
                   <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Empleado&accion=Listar" target="myFrame">Empleados</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Cliente" target="myFrame">Clientes</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
                 </li>
                 <li class="nav-item">
                   <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=RegistrarVenta" target="myFrame">Venta nueva</a>
@@ -41,7 +41,7 @@
                         <img src="com.sales.img/user.png" alt="60" width="60"/>
                     </a>
                   <a class="dropdown-item" href="#">${usuario.getUser()}</a>
-                  <a class="dropdown-item" href="#">usuario@gmail.com</a>
+                  <a class="dropdown-item" href="#">${usuario.getCor()}</a>
                   <div class="dropdown-divider"></div>
                   <form action="LogValidatorController" method="POST">
                      <button name="accion" value="Salir" class="dropdown-item" href="#">Salir</button> 

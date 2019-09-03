@@ -18,20 +18,20 @@ public class EmpleadoDAO {
     ResultSet rs;
     int r;
     
-    public EmpleadoModel validar(String user, String ced){
+    public EmpleadoModel validar(String user, String cont){
         EmpleadoModel em = new EmpleadoModel();
-        String sql = "select * from empleado where Usuario=? and Cedula=?";
+        String sql = "select * from empleado where Usuario=? and Contrasena=?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, user);
-            ps.setString(2, ced);
+            ps.setString(2, cont);
             rs = ps.executeQuery();
             while(rs.next()){
                 em.setId(rs.getInt("IdEmpleado"));
-                em.setUser(rs.getString("Usuario"));
-                em.setCed(rs.getString("Cedula"));
                 em.setNom(rs.getString("Nombre"));
+                em.setUser(rs.getString("Usuario"));
+                em.setCor(rs.getString("Correo"));
             }
         }
         catch (SQLException e){
@@ -51,8 +51,10 @@ public class EmpleadoDAO {
                 emp.setCed(rs.getString("Cedula"));
                 emp.setNom(rs.getString("Nombre"));
                 emp.setTel(rs.getString("Telefono"));
-                emp.setEst(rs.getString("Estado"));
+                emp.setCor(rs.getString("Correo"));
                 emp.setUser(rs.getString("Usuario"));
+                emp.setCont(rs.getString("Contrasena"));
+                emp.setEst(rs.getString("Estado"));
             }
         }
         catch (SQLException e){
@@ -74,8 +76,10 @@ public class EmpleadoDAO {
                 em.setCed(rs.getString(2));
                 em.setNom(rs.getString(3));
                 em.setTel(rs.getString(4));
-                em.setEst(rs.getString(5));
+                em.setCor(rs.getString(5));
                 em.setUser(rs.getString(6));
+                em.setCont(rs.getString(7));
+                em.setEst(rs.getString(8));
                 lista.add(em);
             }
         }
@@ -86,15 +90,17 @@ public class EmpleadoDAO {
     }
     
     public int agregar(EmpleadoModel em){
-        String sql = "insert into empleado (Cedula, Nombre, Telefono, Estado, Usuario) values(?, ?, ?, ?, ?)";
+        String sql = "insert into empleado (Cedula, Nombre, Telefono, Correo, Usuario, Contrasena, Estado) values(?, ?, ?, ?, ?, ?, ?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, em.getCed());
             ps.setString(2, em.getNom());
             ps.setString(3, em.getTel());
-            ps.setString(4, em.getEst());
+            ps.setString(4, em.getCor());
             ps.setString(5, em.getUser());
+            ps.setString(6, em.getCont());
+            ps.setString(7, em.getEst());
             ps.executeUpdate();
         }
         catch (SQLException e){
@@ -104,16 +110,18 @@ public class EmpleadoDAO {
     }
     
     public int actualizar(EmpleadoModel em){
-        String sql = "update empleado set Cedula = ?, Nombre = ?, Telefono = ?, Estado = ?, Usuario = ? where IdEmpleado = ?";
+        String sql = "update empleado set Cedula = ?, Nombre = ?, Telefono = ?, Correo = ?, Usuario = ?, Contrasena = ?, Estado = ? where IdEmpleado = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, em.getCed());
             ps.setString(2, em.getNom());
             ps.setString(3, em.getTel());
-            ps.setString(4, em.getEst());
+            ps.setString(4, em.getCor());
             ps.setString(5, em.getUser());
-            ps.setInt(6, em.getId());
+            ps.setString(6, em.getCont());
+            ps.setString(7, em.getEst());
+            ps.setInt(8, em.getId());
             ps.executeUpdate();
         }
         catch (SQLException e){

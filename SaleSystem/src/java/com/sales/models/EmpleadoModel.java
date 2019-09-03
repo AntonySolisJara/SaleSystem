@@ -6,18 +6,20 @@ package com.sales.models;
  */
 public class EmpleadoModel {
     int id;
-    String ced, nom, tel, est, user;
+    String ced, nom, tel, cor, user, cont, est;
 
     public EmpleadoModel() {
     }
 
-    public EmpleadoModel(int id, String ced, String nom, String tel, String est, String user) {
+    public EmpleadoModel(int id, String ced, String nom, String tel, String cor, String user, String cont, String est) {
         this.id = id;
         this.ced = ced;
         this.nom = nom;
         this.tel = tel;
-        this.est = est;
+        this.cor = cor;
         this.user = user;
+        this.cont = cont;
+        this.est = est;
     }
 
     public int getId() {
@@ -52,12 +54,12 @@ public class EmpleadoModel {
         this.tel = tel;
     }
 
-    public String getEst() {
-        return est;
+    public String getCor() {
+        return cor;
     }
 
-    public void setEst(String est) {
-        this.est = est;
+    public void setCor(String cor) {
+        this.cor = cor;
     }
 
     public String getUser() {
@@ -67,4 +69,21 @@ public class EmpleadoModel {
     public void setUser(String user) {
         this.user = user;
     }
+
+    public String getCont() {
+        return cont;
+    }
+
+    public void setCont(String cont) {
+        this.cont = cont;
+    }
+
+    public String getEst() {
+        return est;
+    }
+
+    public void setEst(String est) {
+        this.est = est;
+    }
+    
 }

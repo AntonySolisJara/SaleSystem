@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="d-flex">
-            <div class="card col-sm-4">
+            <div class="card col-sm-3">
                 <div class="card-body">
                     <form action="InicioController?menu=Empleado" method="POST">
                         <div class="form-group">
@@ -31,12 +31,20 @@
                             <input type="text" name="txtTelefono" value="${empleado.getTel()}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Estado</label>
-                            <input type="text" name="txtEstado" value="${empleado.getEst()}" class="form-control">
+                            <label>Correo</label>
+                            <input type="text" name="txtCorreo" value="${empleado.getCor()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Usuario</label>
                             <input type="text" name="txtUsuario" value="${empleado.getUser()}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="text" name="txtContrasena" value="${empleado.getCont()}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <input type="text" name="txtEstado" value="${empleado.getEst()}" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -51,8 +59,10 @@
                             <th>Cedula</th>
                             <th>Nombre</th>
                             <th>Telefono</th>
-                            <th>Estado</th>
+                            <th>Correo</th>
                             <th>Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Estado</th>
                             <th>Acciones</th> 
                         </tr>
                         
@@ -64,8 +74,10 @@
                             <td>${em.getCed()}</td>
                             <td>${em.getNom()}</td>
                             <td>${em.getTel()}</td>
-                            <td>${em.getEst()}</td>
+                            <td>${em.getCor()}</td>
                             <td>${em.getUser()}</td>
+                            <td>${em.getCont()}</td>
+                            <td>${em.getEst()}</td>
                             <td>
                                 <a class="btn btn-warning" href="InicioController?menu=Empleado&accion=Editar&id=${em.getId()}">Editar</a>
                                 <a class="btn btn-danger" href="InicioController?menu=Empleado&accion=Eliminar&id=${em.getId()}">Eliminar</a>
