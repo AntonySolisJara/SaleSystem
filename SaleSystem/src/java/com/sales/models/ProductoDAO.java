@@ -1,5 +1,4 @@
 package com.sales.models;
-
 import com.sales.config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,5 +76,35 @@ public class ProductoDAO {
             
         }
         return r;
+    }
+    
+    public int actualizar(ProductoModel pm){
+        String sql = "update producto set Descripcion = ?, Precio = ?, Stock = ?, Estado = ? where IdProducto = ?";
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, pm.getDescr());
+            ps.setDouble(2, pm.getPrec());
+            ps.setInt(3, pm.getStk());
+            ps.setString(4, pm.getEst());
+            ps.setInt(5, pm.getId());
+            ps.executeUpdate();
+        }
+        catch(SQLException e){
+            
+        }
+        return r;
+    }
+    
+    public void eliminar(int IdProducto){
+        String sql = "delete from producto where IdProducto =" + IdProducto;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        }
+        catch(SQLException e){
+            
+        }
     }
 }
