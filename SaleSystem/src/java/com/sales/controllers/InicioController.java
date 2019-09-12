@@ -205,6 +205,16 @@ public class InicioController extends HttpServlet {
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
         }
         if (menu.equals("RegistrarVenta")) {
+            switch(accion){
+                case "BuscarCliente":
+                    String cedula = request.getParameter("codigocliente");
+                    cm.setCed(cedula);
+                    cm = cdao.buscar(cedula);
+                    request.setAttribute("cm", cm);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }
     }

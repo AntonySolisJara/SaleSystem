@@ -18,6 +18,29 @@ public class ClienteDAO {
     ResultSet rs;
     int r;
     
+    public ClienteModel buscar(String cedula){
+        ClienteModel cm = new ClienteModel();
+        String sql = "select * from cliente where Cedula =" + cedula;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                cm.setId(rs.getInt(1));
+                cm.setCed(rs.getString(2));
+                cm.setNom(rs.getString(3));
+                cm.setTel(rs.getString(4));
+                cm.setCor(rs.getString(5));
+                cm.setDir(rs.getString(6));
+                cm.setEst(rs.getString(7));
+            }
+        }
+        catch (SQLException ex) {
+            
+        }
+        return cm;
+    }
+    
     public ClienteModel listarId(int IdCliente){
         ClienteModel cliente = new ClienteModel();
         String sql = "select * from cliente where IdCliente =" + IdCliente;
@@ -34,7 +57,7 @@ public class ClienteDAO {
                 cliente.setEst(rs.getString("Estado"));
             }
         }
-        catch(SQLException e){
+        catch(SQLException ex){
             
         }
         return cliente;
@@ -59,7 +82,7 @@ public class ClienteDAO {
                 lista.add(cm);
             }
         }
-        catch(SQLException e){
+        catch(SQLException ex){
             
         }
         return lista;
@@ -78,7 +101,7 @@ public class ClienteDAO {
             ps.setString(6, cm.getEst());
             ps.executeUpdate();
         }
-        catch(SQLException e){
+        catch(SQLException ex){
             
         }
         return r;
@@ -98,7 +121,7 @@ public class ClienteDAO {
             ps.setInt(7, cm.getId());
             ps.executeUpdate();
         }
-        catch(SQLException e){
+        catch(SQLException ex){
             
         }
         return r;
@@ -111,7 +134,7 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         }
-        catch(SQLException e){
+        catch(SQLException ex){
             
         }
     }
