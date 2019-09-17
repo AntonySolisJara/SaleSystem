@@ -207,13 +207,18 @@ public class InicioController extends HttpServlet {
         if (menu.equals("RegistrarVenta")) {
             switch(accion){
                 case "BuscarCliente":
-                    String cedula = request.getParameter("codigocliente");
+                    String cedula = request.getParameter("txtCodigoCliente");
                     cm.setCed(cedula);
                     cm = cdao.buscar(cedula);
                     request.setAttribute("cm", cm);
                     break;
+                case "BuscarProducto":
+                    int id = Integer.parseInt(request.getParameter("txtCodigo"));
+                    pm = pdao.listarId(id);
+                    request.setAttribute("producto", pm);
+                    break;
                 default:
-                    throw new AssertionError();
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
             }
             request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
         }

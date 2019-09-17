@@ -26,10 +26,11 @@ public class ProductoDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                product.setDescr(rs.getString("Descripcion"));
-                product.setPrec(rs.getDouble("Precio"));
-                product.setStk(rs.getInt("Stock"));
-                product.setEst(rs.getString("Estado"));
+                product.setId(rs.getInt(1));
+                product.setDescr(rs.getString(2));
+                product.setPrec(rs.getDouble(3));
+                product.setStk(rs.getInt(4));
+                product.setEst(rs.getString(5));
             }
         }
         catch(SQLException e){

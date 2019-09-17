@@ -29,7 +29,7 @@
                   <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
                 </li>
                 <li class="nav-item">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=RegistrarVenta&accion=BuscarCliente" target="myFrame">Venta nueva</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=RegistrarVenta&accion=default" target="myFrame">Venta nueva</a>
                 </li>
               </ul>
                 <div class="dropdown ml-auto">

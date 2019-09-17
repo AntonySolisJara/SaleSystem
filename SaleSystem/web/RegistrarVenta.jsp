@@ -23,11 +23,11 @@
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigocliente" value="${cm.getCed()}" class="form-control" placeholder="Codigo">
+                                    <input type="text" name="txtCodigoCliente" value="${cm.getCed()}" class="form-control" placeholder="Codigo">
                                     <input type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-info">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente" value="${cm.getNom()}" class="form-control">
+                                    <input type="text" name="nombrescliente" placeholder="Nombre" value="${cm.getNom()}" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -35,22 +35,22 @@
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="codigoproducto" class="form-control" placeholder="Codigo">
-                                    <input type="submit" name="accion" value="Buscar" class="btn btn-outline-info">
+                                    <input type="text" name="txtCodigo" class="form-control" placeholder="Codigo">
+                                    <input type="submit" name="accion" value="BuscarProducto" class="btn btn-outline-info">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" name="nombrescliente" class="form-control" placeholder="Dato de producto">
+                                    <input type="text" name="txtNombreProducto" value="${producto.getDescr()}" class="form-control" placeholder="Dato de producto">
                                 </div>
                             </div>
                             <div class="form-group d-flex">
                                 <div class="col-sm-6 d-flex">
-                                    <input type="text" name="precio" class="form-control" placeholder="S/.0.00">
+                                    <input type="text" name="txtPrecio" value="${producto.getPrec()}" class="form-control" placeholder="S/.0.00">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="number" name="cant" class="form-control">
+                                    <input type="number" name="txtCant" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="text" name="stock" class="form-control" placeholder="Stock">
+                                    <input type="text" name="txtStock" value="${producto.getStk()}" class="form-control" placeholder="Stock">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -65,7 +65,7 @@
                     <div class="card-body">
                        <div class="d-flex col-sm-6 ml-auto">
                            <label>Número serie</label>
-                            <input type="text" name="NroSerie" class="form-control">
+                            <input type="text" name="txtSerie" class="form-control">
                         </div>
                         <br>
                         <table class="table table-hover">
