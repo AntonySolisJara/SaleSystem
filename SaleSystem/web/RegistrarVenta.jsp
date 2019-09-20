@@ -4,6 +4,7 @@
     Author     : Antony
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,14 +48,14 @@
                                     <input type="text" name="txtPrecio" value="${producto.getPrec()}" class="form-control" placeholder="S/.0.00">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="number" name="txtCant" class="form-control">
+                                    <input type="number" name="txtCant" value="1" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
                                     <input type="text" name="txtStock" value="${producto.getStk()}" class="form-control" placeholder="Stock">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="accion" value="Agregar" class="btn btn-outline-info">  
+                                <button type="submit" name="accion" value="Agregar" class="btn btn-outline-info">Agregar Producto</button> 
                             </div>
                         </div>
                     </form>
@@ -81,14 +82,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                            <c:forEach var="list" items="${lista}">
+                                <tr>
+                                    <th>${list.getItem()}</th>
+                                    <th>${list.getIdProducto()}</th>
+                                    <th>${list.getDescripcion()}</th>
+                                    <th>${list.getPrecio()}</th>
+                                    <th>${list.getCantidad()}</th>
+                                    <th>${list.getSubtotal()}</th>
+                                    <th class="d-flex">
+                                        <a class="btn btn-warning">Editar</a>
+                                        <a class="btn btn-danger" style="margin-left: 10px">Eliminar</a>
+                                    </th>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer">
-                        <div>
+                    <div class="card-footer d-flex">
+                        <div class="col-sm-6">
                             <input type="submit" name="accion" value="GenerarVenta" class="btn btn-success">
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                        </div>
+                        <div class="col-sm-4 ml-auto">
+                            <input type="text" name="txtTotal" value="${totalPagar}" class="form-control">
                         </div>
                     </div>
                 </div>
