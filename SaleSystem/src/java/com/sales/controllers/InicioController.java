@@ -223,6 +223,7 @@ public class InicioController extends HttpServlet {
                     int id = Integer.parseInt(request.getParameter("txtCodigo"));
                     pm = pdao.listarId(id);
                     request.setAttribute("producto", pm);
+                    request.setAttribute("cm", cm);
                     request.setAttribute("lista", lista);
                     request.setAttribute("totalPagar", totalPagar);
                     break;
@@ -246,6 +247,7 @@ public class InicioController extends HttpServlet {
                     }
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
+                    request.setAttribute("cm", cm);
                     break;
                 default:
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);

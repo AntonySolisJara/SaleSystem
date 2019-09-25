@@ -105,7 +105,7 @@
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>
                         <div class="col-sm-4 ml-auto">
-                            <input type="text" name="txtTotal" value="${totalPagar}" class="form-control">
+                            <input type="text" name="txtTotal" value="S/.${totalPagar}" class="form-control">
                         </div>
                     </div>
                 </div>
