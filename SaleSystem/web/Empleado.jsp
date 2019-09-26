@@ -51,7 +51,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <table class="table table-hover">
                     <thead>
                         <tr>

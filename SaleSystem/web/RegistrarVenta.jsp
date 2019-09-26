@@ -66,7 +66,7 @@
                     <div class="card-body">
                        <div class="d-flex col-sm-6 ml-auto">
                            <label>Número serie</label>
-                            <input type="text" name="txtSerie" class="form-control">
+                            <input type="text" name="txtSerie" value="${numeroSerie}" class="form-control">
                         </div>
                         <br>
                         <table class="table table-hover">
@@ -101,7 +101,7 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <input type="submit" name="accion" value="GenerarVenta" class="btn btn-success">
+                            <a href="InicioController?menu=RegistrarVenta&accion=GenerarVenta" class="btn btn-success">Generar Venta</a>
                             <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                         </div>
                         <div class="col-sm-4 ml-auto">

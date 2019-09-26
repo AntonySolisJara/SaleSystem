@@ -49,12 +49,13 @@ public class ClienteDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                cliente.setCed(rs.getString("Cedula"));
-                cliente.setNom(rs.getString("Nombre"));
-                cliente.setTel(rs.getString("Telefono"));
-                cliente.setCor(rs.getString("Correo"));
-                cliente.setDir(rs.getString("Direccion"));
-                cliente.setEst(rs.getString("Estado"));
+                cliente.setId(rs.getInt(1));
+                cliente.setCed(rs.getString(2));
+                cliente.setNom(rs.getString(3));
+                cliente.setTel(rs.getString(4));
+                cliente.setCor(rs.getString(5));
+                cliente.setDir(rs.getString(6));
+                cliente.setEst(rs.getString(7));
             }
         }
         catch(SQLException ex){

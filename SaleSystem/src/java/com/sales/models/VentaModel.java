@@ -4,15 +4,15 @@ package com.sales.models;
  *
  * @author Antony
  */
-public class venta {
+public class VentaModel {
     Integer id, item, idCliente, idEmpleado,idProducto, cantidad;
     String serie, descripcion, fecha, estado;
     Double precio, subtotal, monto; 
 
-    public venta() {
+    public VentaModel() {
     }
 
-    public venta(Integer id, Integer item, Integer idCliente, Integer idEmpleado, Integer idProducto, Integer cantidad, String serie, String descripcion, String fecha, String estado, Double precio, Double subtotal, Double monto) {
+    public VentaModel(Integer id, Integer item, Integer idCliente, Integer idEmpleado, Integer idProducto, Integer cantidad, String serie, String descripcion, String fecha, String estado, Double precio, Double subtotal, Double monto) {
         this.id = id;
         this.item = item;
         this.idCliente = idCliente;
