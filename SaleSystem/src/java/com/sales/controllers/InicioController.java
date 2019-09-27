@@ -217,7 +217,7 @@ public class InicioController extends HttpServlet {
             switch(accion){
                 case "BuscarCliente":
                     String cedula = request.getParameter("txtCodigoCliente");
-                    //cm.setCed(cedula);
+                    cm.setCed(cedula);
                     cm = cdao.buscar(cedula);
                     request.setAttribute("producto", pm);
                     request.setAttribute("cm", cm);

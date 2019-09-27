@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class VentaDAO {
     
     Connection con;
-    Conexion cn;
+    Conexion cn = new Conexion();
     PreparedStatement ps;
     ResultSet rs;
     int r;
