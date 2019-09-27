@@ -28,6 +28,9 @@ public class GenerarSerie {
         if ((this.dato >= 100) && (this.dato <= 1000)) {
             numero = "00000" + this.dato;
         }
+        if ((this.dato >= 100) && (this.dato <= 1000)) {
+            numero = "000000" + this.dato;
+        }
         if ((this.dato >= 10) && (this.dato <= 100)) {
             numero = "0000000" + this.dato;
         }

@@ -219,20 +219,17 @@ public class InicioController extends HttpServlet {
                     String cedula = request.getParameter("txtCodigoCliente");
                     cm.setCed(cedula);
                     cm = cdao.buscar(cedula);
-                    request.setAttribute("producto", pm);
                     request.setAttribute("cm", cm);
-                    request.setAttribute("lista", lista);
-                    request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("numeroSerie", numeroSerie);
                     break;
                 case "BuscarProducto":
                     int id = Integer.parseInt(request.getParameter("txtCodigo"));
                     pm = pdao.listarId(id);
                     request.setAttribute("producto", pm);
-                    request.setAttribute("cm", cm);
                     request.setAttribute("lista", lista);
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("numeroSerie", numeroSerie);
+                    request.setAttribute("cm", cm);
                     break;
                 case "Agregar":
                     item = item + 1;
@@ -254,8 +251,8 @@ public class InicioController extends HttpServlet {
                     }
                     request.setAttribute("totalPagar", totalPagar);
                     request.setAttribute("lista", lista);
-                    request.setAttribute("cm", cm);
                     request.setAttribute("numeroSerie", numeroSerie);
+                    request.setAttribute("cm", cm);
                     break;
                 case "GenerarVenta":
                     //guardar venta
@@ -277,11 +274,17 @@ public class InicioController extends HttpServlet {
                         v.setPrecio(lista.get(i).getPrecio());
                         vdao.guardarDetalleVenta(v);
                     }
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
                 default:
+                    v = new VentaModel();
+                    lista = new ArrayList<>();
+                    item = 0;
+                    totalPagar = 0.0;
+                    
                     numeroSerie = vdao.generarSerie();
                     if (numeroSerie == null) {
-                        numeroSerie = "00000001";
+                        numeroSerie = "000000001";
                         request.setAttribute("numeroSerie", numeroSerie);
                     }
                     else{
