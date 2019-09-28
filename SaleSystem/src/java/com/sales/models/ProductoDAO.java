@@ -18,6 +18,27 @@ public class ProductoDAO {
     ResultSet rs;
     int r;
     
+    public ProductoModel buscar(String id){
+        ProductoModel pm = new ProductoModel();
+        String sql = "select * from producto where IdProducto =" + id;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                pm.setId(rs.getInt(1));
+                pm.setDescr(rs.getString(2));
+                pm.setPrec(rs.getDouble(3));
+                pm.setStk(rs.getInt(4));
+                pm.setEst(rs.getString(5));
+            }
+        }
+        catch (SQLException ex) {
+            
+        }
+        return pm;
+    }
+    
     public ProductoModel listarId(int IdProducto){
         ProductoModel product = new ProductoModel();
         String sql = "select * from producto where IdProducto =" + IdProducto;
