@@ -12,10 +12,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Registrar Venta!</title>
+        <style>
+            @media print{
+                .parte01, .btn, .accion{
+                    display: none;
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="d-flex">
-            <div class="col-sm-5">
+            <div class="col-sm-5 parte01">
                 <div class="card">
                     <form action="InicioController?menu=RegistrarVenta" method="POST">
                         <div class="card-body">
@@ -78,7 +85,7 @@
                                     <th>Precio</th>
                                     <th>Cantidad</th>
                                     <th>Subtotal</th>
-                                    <th>Acciones</th>
+                                    <th class="accion">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -101,8 +108,8 @@
                     </div>
                     <div class="card-footer d-flex">
                         <div class="col-sm-6">
-                            <a href="InicioController?menu=RegistrarVenta&accion=GenerarVenta" class="btn btn-success">Generar Venta</a>
-                            <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
+                            <a href="InicioController?menu=RegistrarVenta&accion=GenerarVenta" onclick="print()" class="btn btn-success">Generar Venta</a>
+                            <a href="InicioController?menu=RegistrarVenta&accion=Cancelar" class="btn btn-danger">Cancelar</a>
                         </div>
                         <div class="col-sm-4 ml-auto">
                             <input type="text" name="txtTotal" value="S/.${totalPagar}" class="form-control">

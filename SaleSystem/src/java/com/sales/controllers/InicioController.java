@@ -255,6 +255,17 @@ public class InicioController extends HttpServlet {
                     request.setAttribute("cm", cm);
                     break;
                 case "GenerarVenta":
+                    //actualizar stock
+                    for (int i = 0; i < lista.size(); i++) {
+                        ProductoModel pn = new ProductoModel();
+                        int cantidad = lista.get(i).getCantidad();
+                        int idProducto = lista.get(i).getIdProducto();
+                        ProductoDAO pndao = new ProductoDAO();
+                        pn = pndao.buscar(idProducto);
+                        int stockActual =  pn.getStk() - cantidad;
+                        pndao.actualizarStock(idProducto, stockActual);
+                    }
+                    
                     //guardar venta
                     v.setIdCliente(cm.getId());
                     v.setIdEmpleado(2);
@@ -274,6 +285,11 @@ public class InicioController extends HttpServlet {
                         v.setPrecio(lista.get(i).getPrecio());
                         vdao.guardarDetalleVenta(v);
                     }
+                    request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+                    break;
+                case "Cancelar":
+                    request.setAttribute("cm", cm);
+                    request.setAttribute("numeroSerie", numeroSerie);
                     request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
                     break;
                 default:

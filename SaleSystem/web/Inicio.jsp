@@ -13,11 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <nav class="navbar navbar-expand-lg navbar-light bg-info">
+          <nav class="navbar navbar-expand-lg navbar-light bg-success">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Inicio">Inicio</a>
+                  <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="InicioController?menu=Producto&accion=Listar" target="myFrame">Productos</a>

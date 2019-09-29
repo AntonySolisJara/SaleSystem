@@ -18,7 +18,7 @@ public class ProductoDAO {
     ResultSet rs;
     int r;
     
-    public ProductoModel buscar(String id){
+    public ProductoModel buscar(int id){
         ProductoModel pm = new ProductoModel();
         String sql = "select * from producto where IdProducto =" + id;
         try{
@@ -37,6 +37,21 @@ public class ProductoDAO {
             
         }
         return pm;
+    }
+    
+    public int actualizarStock(int id, int stock){
+        String sql = "update producto set Stock = ? where IdProducto = ?";
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, stock);
+            ps.setInt(2, id);
+            ps.executeUpdate(); 
+        }
+        catch (SQLException ex) {
+            
+        }
+        return r;
     }
     
     public ProductoModel listarId(int IdProducto){
