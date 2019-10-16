@@ -73,9 +73,12 @@ public class LogValidatorController extends HttpServlet {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = edao.validar(user, pass);
-            if (em.getUser() != null) {
-                request.setAttribute("usuario", em);
-                request.getRequestDispatcher("InicioController?menu=Inicio").forward(request, response);
+            if (em.getUser().equalsIgnoreCase(user)) {
+                if (em.getCont().equalsIgnoreCase(pass)) {
+                    request.setAttribute("usuario", em);
+                    request.getRequestDispatcher("InicioController?menu=Inicio").forward(request, response);
+                }
+                
             }
             else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);
