@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -73,18 +74,20 @@ public class LogValidatorController extends HttpServlet {
             String user = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             em = edao.validar(user, pass);
-            if (em.getUser().equalsIgnoreCase(user)) {
-                if (em.getCont().equalsIgnoreCase(pass)) {
-                    request.setAttribute("usuario", em);
-                    request.getRequestDispatcher("InicioController?menu=Inicio").forward(request, response);
-                }
-                
+            if (em.getUser() != null) {
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("usuario", em);
+                request.getRequestDispatcher("InicioController?menu=Inicio").forward(request, response);
             }
             else{
+                HttpSession sesion = request.getSession();
+                sesion.removeAttribute("usuario");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         }
         else{
+            HttpSession sesion = request.getSession();
+            sesion.removeAttribute("usuario");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
